@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ubuntu   # (1)
+    working_directory: ~/build
+    steps:
+      - checkout
+      - setup_remote_docker:
+          reusable: true
+
+      # use a primary image that already has Docker (recommended)
+      # or install it during a build like we do here
+      - run:
+          name: Install Docker client
+          command: |
+            apt-get update && apt-get install -y curl
+            set -x
+            VER="17.03.0-ce"
+            curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
+            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            mv /tmp/docker/* /usr/bin
+
+      # build and push Docker image
+      - run: |
+          DOCKER_REPO=https://hub.docker.com/r/sachinruk/
+          DOCKER_IMAGE=${DOCKER_REPO}/miniconda3
+          TAG=0.1.$CIRCLE_BUILD_NUM
+          docker build -t ${DOCKER_IMAGE}:$TAG ./Miniconda3/
+          docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+          docker push ${DOCKER_IMAGE}:$TAG
