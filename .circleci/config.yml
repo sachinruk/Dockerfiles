@@ -23,9 +23,8 @@ jobs:
 
       # build and push Docker image
       - run: |
-          DOCKER_REPO=https://hub.docker.com/r/sachinruk/
-          DOCKER_IMAGE=${DOCKER_REPO}/miniconda3
-          TAG=0.1.$CIRCLE_BUILD_NUM
-          docker build -t ${DOCKER_IMAGE}:$TAG ./Miniconda3/
           docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-          docker push ${DOCKER_IMAGE}:$TAG
+          chmod +x build_script.py
+          python build_script.py 0.1.$CIRCLE_BUILD_NUM
+
+          
