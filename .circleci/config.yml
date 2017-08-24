@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Install Docker client
           command: |
-            apt-get update && apt-get install -y curl
+            apt-get update && apt-get install -y curl python3 git
             set -x
             VER="17.03.0-ce"
             curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
@@ -23,8 +23,6 @@ jobs:
 
       # build and push Docker image
       - run: |
-          docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
           chmod +x build_script.py
-          python build_script.py 0.1.$CIRCLE_BUILD_NUM
-
-          
+          python3 build_script.py 0.1.$CIRCLE_BUILD_NUM
