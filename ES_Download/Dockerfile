@@ -10,4 +10,4 @@ RUN conda clean --yes --tarballs --packages --source-cache
 VOLUME /notebook
 WORKDIR /notebook
 
-RUN apt-get update && apt-get instal -y --no-install-recommends openssh-server
+RUN apt-get update && apt-get install -y --no-install-recommends openssh-server
