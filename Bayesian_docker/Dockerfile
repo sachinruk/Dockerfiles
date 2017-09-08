@@ -7,8 +7,11 @@ RUN conda install -y \
     matplotlib \
     seaborn \
     scikit-learn \
-    pandas \
-    pymc3
+    pandas
+
+RUN conda install -y \
+  pymc3 \
+  plotly
 
 RUN conda config --append channels conda-forge
 
