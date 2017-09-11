@@ -11,7 +11,8 @@ RUN conda install -y \
 
 RUN conda config --append channels conda-forge
 
-RUN conda install -y tensorflow \
-                     keras
+RUN pip install -y tensorflow keras
+
+RUN conda install -y numpy
 
 RUN conda clean --yes --tarballs --packages --source-cache
