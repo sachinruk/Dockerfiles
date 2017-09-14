@@ -9,11 +9,9 @@ RUN conda install -y \
     scikit-learn \
     pandas
 
-RUN conda install -y \
-  pymc3 \
-  plotly
-
 RUN conda config --append channels conda-forge
+
+RUN conda install -y pymc3
 
 RUN conda clean --yes --tarballs --packages --source-cache
 
