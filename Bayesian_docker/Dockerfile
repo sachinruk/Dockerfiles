@@ -13,6 +13,8 @@ RUN conda config --append channels conda-forge
 
 RUN conda install -c conda-forge -y pymc3
 
+RUN conda install -y mkl-service
+
 RUN conda clean --yes --tarballs --packages --source-cache
 
 VOLUME /notebook
