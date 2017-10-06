@@ -16,7 +16,7 @@ ENV PATH=/root/miniconda3/bin:$PATH
 
 RUN conda install -y pandas
 
-RUN pip install requests beautifulsoup4
+RUN pip install requests lxml beautifulsoup4
 
 VOLUME /notebook
 WORKDIR /notebook
