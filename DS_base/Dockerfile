@@ -9,8 +9,4 @@ RUN conda install -y \
     scikit-learn \
     pandas
 
-RUN conda config --append channels conda-forge
-
-RUN conda install -y tensorflow keras
-
 RUN conda clean --yes --tarballs --packages --source-cache

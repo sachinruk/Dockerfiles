@@ -1,10 +1,10 @@
 FROM sachinruk/ds_base
 
+RUN conda config --append channels conda-forge
+RUN conda install -y tensorflow keras
+
 RUN apt-get update && apt-get install -y graphviz xvfb python-opengl
 RUN pip install graphviz xgboost
-
-RUN apt-get install -y cmake zlib1g-dev libjpeg-dev libav-tools xorg-dev libboost-all-dev libsdl2-dev swig
-RUN pip install 'gym[all]'
 
 VOLUME /notebook
 WORKDIR /notebook

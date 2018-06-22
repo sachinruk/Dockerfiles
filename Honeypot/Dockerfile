@@ -1,5 +1,8 @@
 FROM sachinruk/ds_base
 
+RUN conda config --append channels conda-forge
+RUN conda install -y tensorflow keras
+
 RUN conda install -y plotly
 
 RUN conda clean --yes --tarballs --packages --source-cache
