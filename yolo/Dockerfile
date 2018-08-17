@@ -27,23 +27,23 @@ RUN pip install opencv-contrib-python
 
 WORKDIR /
 RUN git clone https://github.com/pjreddie/darknet.git
-WORKDIR /darknet
-# Set OpenCV makefile flag (already done)
-RUN sed -i 's/OPENCV=1/OPENCV=0/' Makefile
-RUN make
-ENV DARKNET_HOME /darknet
-ENV LD_LIBRARY_PATH /darknet
+# WORKDIR /darknet
+# # Set OpenCV makefile flag (already done)
+# RUN sed -i 's/OPENCV=1/OPENCV=0/' Makefile
+# RUN make
+# ENV DARKNET_HOME /darknet
+# ENV LD_LIBRARY_PATH /darknet
 
-## Download and compile YOLO3-4-Py ##
-WORKDIR /
-RUN git clone https://github.com/madhawav/YOLO3-4-Py.git
-WORKDIR /YOLO3-4-Py
-RUN pip3 install pkgconfig
-RUN pip3 install cython
-RUN python3 setup.py build_ext --inplace
+# ## Download and compile YOLO3-4-Py ##
+# WORKDIR /
+# RUN git clone https://github.com/madhawav/YOLO3-4-Py.git
+# WORKDIR /YOLO3-4-Py
+# RUN pip3 install pkgconfig
+# RUN pip3 install cython
+# RUN python3 setup.py build_ext --inplace
 
-RUN conda clean --yes --tarballs --packages --source-cache
+# RUN conda clean --yes --tarballs --packages --source-cache
 
-VOLUME /YOLO3-4-Py
-EXPOSE 8888
-CMD jupyter notebook --allow-root --no-browser --ip=0.0.0.0 --NotebookApp.token=
+# VOLUME /YOLO3-4-Py
+# EXPOSE 8888
+# CMD jupyter notebook --allow-root --no-browser --ip=0.0.0.0 --NotebookApp.token=
