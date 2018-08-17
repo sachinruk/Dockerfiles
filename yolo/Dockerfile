@@ -33,9 +33,9 @@ ENV LD_LIBRARY_PATH /darknet
 WORKDIR /
 RUN git clone https://github.com/madhawav/YOLO3-4-Py.git
 WORKDIR /YOLO3-4-Py
-RUN pip3 install pkgconfig
-RUN pip3 install cython
-RUN python3 setup.py build_ext --inplace
+RUN pip install pkgconfig
+RUN pip install cython
+RUN python setup.py build_ext --inplace
 
 RUN conda install -y \
     h5py \
