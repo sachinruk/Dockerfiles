@@ -3,30 +3,34 @@ FROM ubuntu
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     build-essential \
+    ca-certificates \
     curl \
     git \
   && rm -rf /var/lib/apt/lists/*
 
-RUN curl -qsSLkO \
-      https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-`uname -p`.sh \
-    && bash Miniconda3-latest-Linux-`uname -p`.sh -b \
-    && rm Miniconda3-latest-Linux-`uname -p`.sh
-
-ENV PATH=/root/miniconda3/bin:$PATH
-
-RUN conda install -y \
-    h5py \
-    pandas \
-    jupyter \
-    matplotlib \
-    seaborn \
-    scikit-learn
-
-RUN pip install opencv-python
-RUN pip install opencv-contrib-python
-
 WORKDIR /
 RUN git clone https://github.com/pjreddie/darknet.git
+
+# RUN curl -qsSLkO \
+#       https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-`uname -p`.sh \
+#     && bash Miniconda3-latest-Linux-`uname -p`.sh -b \
+#     && rm Miniconda3-latest-Linux-`uname -p`.sh
+
+# ENV PATH=/root/miniconda3/bin:$PATH
+
+# RUN conda install -y \
+#     h5py \
+#     pandas \
+#     jupyter \
+#     matplotlib \
+#     seaborn \
+#     scikit-learn
+
+# RUN pip install opencv-python
+# RUN pip install opencv-contrib-python
+
+# WORKDIR /
+# RUN git clone https://github.com/pjreddie/darknet.git
 # WORKDIR /darknet
 # # Set OpenCV makefile flag (already done)
 # RUN sed -i 's/OPENCV=1/OPENCV=0/' Makefile
