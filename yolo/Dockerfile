@@ -15,14 +15,6 @@ RUN curl -qsSLkO \
 
 ENV PATH=/root/miniconda3/bin:$PATH
 
-RUN conda install -y \
-    h5py \
-    pandas \
-    jupyter \
-    matplotlib \
-    seaborn \
-    scikit-learn
-
 RUN pip install opencv-python
 RUN pip install opencv-contrib-python
 
@@ -43,6 +35,14 @@ WORKDIR /YOLO3-4-Py
 RUN pip3 install pkgconfig
 RUN pip3 install cython
 RUN python3 setup.py build_ext --inplace
+
+RUN conda install -y \
+    h5py \
+    pandas \
+    jupyter \
+    matplotlib \
+    seaborn \
+    scikit-learn
 
 RUN conda clean --yes --tarballs --packages --source-cache
 
