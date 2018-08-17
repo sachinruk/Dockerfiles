@@ -29,6 +29,9 @@ RUN pip install opencv-contrib-python
 WORKDIR /
 RUN git clone https://github.com/pjreddie/darknet.git
 WORKDIR /darknet
+# Set GPU flags to none
+RUN sed -i 's/GPU=1/GPU=0/' Makefile
+RUN sed -i 's/CUDNN=1/CUDNN=0/' Makefile
 RUN make
 ENV DARKNET_HOME /darknet
 ENV LD_LIBRARY_PATH /darknet
