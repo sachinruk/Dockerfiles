@@ -28,6 +28,8 @@ RUN ldconfig
 WORKDIR /
 RUN apt-get install -y git
 RUN git clone https://github.com/pjreddie/darknet.git
+RUN sed -i 's/GPU=1/GPU=0/' Makefile
+RUN sed -i 's/CUDNN=1/CUDNN=0/' Makefile
 WORKDIR /darknet
 # Set OpenCV makefile flag
 RUN sed -i '/OPENCV=0/c\OPENCV=1' Makefile
