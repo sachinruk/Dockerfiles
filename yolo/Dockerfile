@@ -15,6 +15,7 @@ RUN curl -qsSLkO \
 
 ENV PATH=/root/miniconda3/bin:$PATH
 
+RUN pip install --upgrade pip
 RUN pip install opencv-python
 RUN pip install opencv-contrib-python
 
@@ -35,18 +36,18 @@ RUN git clone https://github.com/madhawav/YOLO3-4-Py.git
 WORKDIR /YOLO3-4-Py
 RUN pip install pkgconfig
 RUN pip install cython
-RUN python setup.py build_ext --inplace
+# RUN python setup.py build_ext --inplace
 
-RUN conda install -y \
-    h5py \
-    pandas \
-    jupyter \
-    matplotlib \
-    seaborn \
-    scikit-learn
+# RUN conda install -y \
+#     h5py \
+#     pandas \
+#     jupyter \
+#     matplotlib \
+#     seaborn \
+#     scikit-learn
 
-RUN conda clean --yes --tarballs --packages --source-cache
+# RUN conda clean --yes --tarballs --packages --source-cache
 
-VOLUME /YOLO3-4-Py
-EXPOSE 8888
-CMD jupyter notebook --allow-root --no-browser --ip=0.0.0.0 --NotebookApp.token=
+# VOLUME /YOLO3-4-Py
+# EXPOSE 8888
+# CMD jupyter notebook --allow-root --no-browser --ip=0.0.0.0 --NotebookApp.token=
