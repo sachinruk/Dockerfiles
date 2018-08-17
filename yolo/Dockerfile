@@ -14,7 +14,7 @@ RUN curl -qsSLkO \
 
 ENV PATH=/root/miniconda3/bin:$PATH
 
-RUN RUN conda install -y \
+RUN conda install -y \
     h5py \
     pandas \
     jupyter \
