@@ -22,6 +22,7 @@ WORKDIR /
 RUN git clone https://github.com/pjreddie/darknet.git
 WORKDIR /darknet
 # Set GPU flags to none
+RUN sed -i 's/OPENCV=1/OPENCV=0/' Makefile
 RUN sed -i 's/GPU=1/GPU=0/' Makefile
 RUN sed -i 's/CUDNN=1/CUDNN=0/' Makefile
 RUN make
