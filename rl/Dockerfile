@@ -24,7 +24,7 @@ RUN conda install -y \
     pandas
 
 RUN conda config --append channels conda-forge
-RUN conda install pytorch torchvision -c pytorch
+RUN conda install -y pytorch torchvision -c pytorch
 RUN conda install -y JSAnimation
 
 RUN apt-get update && apt-get install -y graphviz xvfb python-opengl swig
