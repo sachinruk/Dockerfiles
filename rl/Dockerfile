@@ -29,7 +29,7 @@ RUN conda install -y JSAnimation
 
 RUN apt-get update && apt-get install -y graphviz xvfb python-opengl swig
 RUN pip install graphviz
-RUN pip install gym box2d
+RUN pip install gym pyvirtualdisplay box2d box2d-kengz
 
 RUN conda clean --yes --tarballs --packages --source-cache
 
