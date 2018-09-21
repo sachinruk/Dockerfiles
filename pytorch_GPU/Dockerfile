@@ -24,12 +24,13 @@ ENV PATH /opt/conda/bin:$PATH
 WORKDIR /opt/pytorch
 COPY . .
 
-RUN git submodule update --init
-RUN TORCH_CUDA_ARCH_LIST="3.5 5.2 6.0 6.1 7.0+PTX" TORCH_NVCC_FLAGS="-Xfatbin -compress-all" \
-    CMAKE_PREFIX_PATH="$(dirname $(which conda))/../" \
-    pip install -v .
+# RUN git submodule update --init
+# RUN TORCH_CUDA_ARCH_LIST="3.5 5.2 6.0 6.1 7.0+PTX" TORCH_NVCC_FLAGS="-Xfatbin -compress-all" \
+#     CMAKE_PREFIX_PATH="$(dirname $(which conda))/../" \
+#     pip install -v .
+# RUN git clone https://github.com/pytorch/vision.git && cd vision && pip install -v .
 
-RUN git clone https://github.com/pytorch/vision.git && cd vision && pip install -v .
+RUN conda install pytorch torchvision -c pytorch
 
 RUN conda install -y \
     h5py \
