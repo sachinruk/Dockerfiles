@@ -19,9 +19,7 @@ RUN conda install -y \
     pandas \
     jupyter \
     matplotlib \
-    seaborn \
-    scikit-learn \
-    pandas
+    scikit-learn
 
 RUN conda config --append channels conda-forge
 RUN conda install -y pytorch-cpu torchvision-cpu -c pytorch
@@ -30,6 +28,7 @@ RUN conda install -y JSAnimation
 RUN apt-get update && apt-get install -y graphviz xvfb python-opengl swig
 RUN pip install graphviz
 RUN pip install gym pyvirtualdisplay box2d box2d-kengz
+RUN pip install mlagents
 
 RUN conda clean --yes --tarballs --packages --source-cache
 
