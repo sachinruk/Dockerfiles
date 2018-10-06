@@ -5,8 +5,6 @@ RUN conda install -y \
     pandas \
     jupyter \
     matplotlib \
-    seaborn \
-    scikit-learn \
-    pandas
+    scikit-learn
 
 RUN conda clean --yes --tarballs --packages --source-cache
