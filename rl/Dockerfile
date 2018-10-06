@@ -1,8 +1,8 @@
 FROM sachinruk/ds_base
 
-# RUN apt-get update && apt-get install -y graphviz xvfb python-opengl swig
+RUN apt-get update && apt-get install -y graphviz xvfb python-opengl swig
 # RUN pip install graphviz
-RUN pip install mlagents
+# RUN pip install mlagents
 RUN pip install gym pyvirtualdisplay box2d box2d-kengz
 
 RUN conda config --append channels conda-forge
@@ -10,6 +10,8 @@ RUN conda install -y pytorch-cpu torchvision-cpu -c pytorch
 RUN conda install -y JSAnimation
 
 RUN conda clean --yes --tarballs --packages --source-cache
+
+COPY jupyter_notebook_config.py /root/.jupyter/
 
 VOLUME /notebook
 WORKDIR /notebook
