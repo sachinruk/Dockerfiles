@@ -51,4 +51,4 @@ VOLUME /notebook
 WORKDIR /notebook
 EXPOSE 8888
 
-CMD jupyter notebook --allow-root --no-browser --ip=0.0.0.0 --NotebookApp.token=
+CMD jupyter lab --allow-root --no-browser --ip=0.0.0.0 --NotebookApp.token=
