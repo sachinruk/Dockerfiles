@@ -3,15 +3,16 @@ FROM sachinruk/miniconda3
 RUN conda install -y \
     mkl-service \
     h5py \
-    pandas \
     jupyter \
     matplotlib \
     seaborn \
     scikit-learn \
-    pandas
+    pandas \
+    xlrd
 
 RUN conda config --append channels conda-forge
-RUN conda install -c conda-forge -y fbprophet
+RUN conda install -yc plotly plotly
+RUN conda install -yc conda-forge fbprophet feather-format
 
 RUN conda clean --yes --tarballs --packages --source-cache
 
