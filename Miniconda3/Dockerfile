@@ -7,9 +7,9 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 RUN curl -qsSLkO \
-      https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh \
-    && bash Miniconda3-4.5.4-Linux-x86_64.sh -b \
-    && rm Miniconda3-4.5.4-Linux-x86_64.sh
+      https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+    && bash Miniconda3-latest-Linux-x86_64.sh -b \
+    && rm Miniconda3-latest-Linux-x86_64.sh
 
 ENV PATH=/root/miniconda3/bin:$PATH
 
