@@ -17,6 +17,7 @@ RUN conda install -yc conda-forge fbprophet feather-format
 RUN conda clean --yes --tarballs --packages --source-cache
 
 COPY jupyter_notebook_config.py /root/.jupyter/
+COPY custom.js /root/.jupyter/
 
 VOLUME /notebook
 WORKDIR /notebook
