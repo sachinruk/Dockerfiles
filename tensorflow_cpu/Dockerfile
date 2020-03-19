@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y graphviz xvfb python-opengl
 RUN pip install graphviz xgboost
 
 RUN conda clean --yes --tarballs --packages --source-cache
+COPY jupyter_notebook_config.py /root/.jupyter/
 
 VOLUME /notebook
 WORKDIR /notebook
