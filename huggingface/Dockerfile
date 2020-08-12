@@ -10,7 +10,8 @@ RUN conda install -y \
     pandas \
     jupyter \
     matplotlib \
-    scikit-learn
+    scikit-learn \
+    pyarrow
 
 RUN conda install pytorch torchvision cpuonly -y -c pytorch
 
