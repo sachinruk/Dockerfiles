@@ -1,5 +1,9 @@
 FROM sachinruk/miniconda3
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    git
+
 RUN conda install -y \
     h5py \
     pandas \
