@@ -12,6 +12,8 @@ RUN conda install -y \
     matplotlib \
     scikit-learn
 
+RUN conda install pytorch torchvision cpuonly -c pytorch
+
 RUN pip install git+https://github.com/huggingface/transformers.git
 
 RUN conda clean --yes --tarballs --packages --source-cache
