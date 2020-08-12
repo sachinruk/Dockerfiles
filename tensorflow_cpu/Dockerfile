@@ -22,13 +22,17 @@ RUN conda install -y \
     matplotlib \
     scikit-learn
 
-RUN conda install -yc conda-forge pymc3
-RUN conda clean --yes --tarballs --packages --source-cache
+RUN conda config --append channels conda-forge
+RUN conda install -y tensorflow keras
 
+RUN apt-get update && apt-get install -y graphviz xvfb python-opengl
+RUN pip install graphviz xgboost
+
+RUN conda clean --yes --tarballs --packages --source-cache
 COPY jupyter_notebook_config.py /root/.jupyter/
 
 VOLUME /notebook
 WORKDIR /notebook
 EXPOSE 8888
 
-CMD jupyter notebook --allow-root --no-browser --ip=0.0.0.0 --NotebookApp.token=
+CMD xvfb-run -s "-screen 0 1400x900x24" jupyter notebook --allow-root --no-browser --ip=0.0.0.0 --NotebookApp.token=
