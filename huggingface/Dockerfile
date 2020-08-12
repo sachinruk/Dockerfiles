@@ -2,7 +2,8 @@ FROM sachinruk/miniconda3
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    git
+    git \
+    ca-certificates
 
 RUN conda install -y \
     h5py \
